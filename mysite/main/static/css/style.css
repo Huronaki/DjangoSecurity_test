@@ -1,0 +1,132 @@
+/* ===== Base ===== */
+
+body {
+    font-family: "Inter", "Roboto", "Helvetica Neue", Arial, sans-serif;
+    background-color: #0f1a14;   /* мягкий тёмно-зелёный */
+    color: #d6e4da;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+  }
+  
+  /* ===== Header / Nav ===== */
+  
+  header {
+    background-color: #16241c;
+    padding: 14px 24px;
+    border-bottom: 1px solid #23372c;
+  }
+  
+  nav a,
+  nav form button {
+    color: #b8d2c2;
+    text-decoration: none;
+    margin-right: 18px;
+    font-size: 0.95rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  
+  nav a:hover,
+  nav form button:hover {
+    color: #e4f1ea;
+  }
+  
+  /* ===== Layout ===== */
+  
+  main {
+    max-width: 720px;
+    margin: 40px auto;
+    background-color: #16241c;
+    padding: 28px 32px;
+    border-radius: 12px;
+  }
+  
+  /* ===== Headings ===== */
+  
+  h2 {
+    margin-top: 0;
+    font-weight: 600;
+    color: #e4f1ea;
+  }
+  
+  /* ===== Forms ===== */
+  
+  input,
+  textarea {
+    width: 100%;
+    padding: 10px 12px;
+    margin: 6px 0 18px 0;
+    border-radius: 8px;
+    border: 1px solid #2a4033;
+    background-color: #0f1a14;
+    color: #d6e4da;
+    font-size: 0.95rem;
+  }
+  
+  input:focus,
+  textarea:focus {
+    outline: none;
+    border-color: #6fa38b;
+  }
+  
+  /* ===== Buttons ===== */
+
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 20px;
+  }
+  
+  button,
+  .btn {
+    min-width: 140px;
+    padding: 10px 0;
+    border-radius: 10px;
+    background-color: #2f6f55;
+    color: #ecf6f1;
+    border: 1px solid #2a5f49;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.05s ease;
+  }
+  
+  button:hover,
+  .btn:hover {
+    background-color: #3f8a6b;
+  }
+  
+  button:active,
+  .btn:active {
+    transform: translateY(1px);
+  }
+  
+  
+  /* ===== Links ===== */
+  
+  a {
+    color: #7fbfa1;
+  }
+  
+  a:hover {
+    color: #cfe8dd;
+  }
+  
+  /* ===== Errors ===== */
+  
+  ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 20px;
+  }
+  
+  ul li {
+    color: #e57373;
+    font-size: 0.9rem;
+  }
+  

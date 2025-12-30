@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Профиль пользователя {{ request.user.username }}{% endblock %}
+
+{% block content %}
+<h2>Профиль пользователя {{ request.user.username }}</h2>
+
+{% if profile.avatar %}
+  <img src="{{ profile.avatar.url }}" alt="Аватар" width="150" />
+{% else %}
+  <p>Аватар не загружен</p>
+{% endif %}
+
+<p>О себе:</p>
+<p>{{ profile.bio|linebreaks }}</p>
+
+<div class="button-group">
+  <a href="{% url 'edit_profile' %}" class="btn">Редактировать</a>
+  <a href="{% url 'export_csv' %}" class="btn">Скачать CSV</a>
+</div>
+{% endblock %}
