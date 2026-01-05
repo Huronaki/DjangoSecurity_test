@@ -6,6 +6,9 @@ from .models import Profile
 from django.contrib.auth.decorators import login_required
 import csv
 import re
+from django.http import HttpResponse, Http404
+from django.contrib.auth.models import User
+
 
 #  Against CSV Injection
 def strict_safe_csv(value):
@@ -62,20 +65,33 @@ def edit_profile(request):
 
 @login_required
 def export_profile_csv(request):
-    profile = request.user.profile
+    user_id = request.GET.get('user_id')
 
-    response = HttpResponse(
-        content_type='text/csv'
-    )
+    try:
+        if user_id:
+            user = User.objects.get(id=user_id)
+        else:
+            user = request.user
+        profile = user.profile
+    except User.DoesNotExist:
+        return HttpResponse("User not found", status=404)
+    except Profile.DoesNotExist:
+        return HttpResponse("Profile not found", status=404)
+    
+
+    user = request.user
+    profile = user.profile
+
+    response = HttpResponse(content_type='text/csv')
     response['Content-Disposition'] = 'attachment; filename="profile.csv"'
 
     writer = csv.writer(response)
     writer.writerow(['username', 'bio', 'avatar'])
-
     writer.writerow([
-        strict_safe_csv(request.user.username),
-        strict_safe_csv(profile.bio),
+        user.username,
+        profile.bio,
         profile.avatar.url if profile.avatar else ''
     ])
 
     return response
+
