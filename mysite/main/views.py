@@ -78,7 +78,6 @@ def export_profile_csv(request):
         return HttpResponse("Profile not found", status=404)
 
     user_id = request.GET.get('user_id')
-
     if user_id:
         user = User.objects.get(id=user_id)
     else:
@@ -90,11 +89,11 @@ def export_profile_csv(request):
     response['Content-Disposition'] = 'attachment; filename="profile.csv"'
 
     writer = csv.writer(response)
-    writer.writerow(['username', 'bio'])
-
+    writer.writerow(['username', 'bio', 'avatar'])
     writer.writerow([
         user.username,
-        profile.bio
+        profile.bio,
+        profile.avatar.url if profile.avatar else ''
     ])
 
     return response
